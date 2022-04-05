@@ -33,10 +33,12 @@ def press():
     else:
         image = Image.open(image_path)
         width, height = image.size
-        image.show()
         watermark = Image.open('silhouette.png')
         watermark.thumbnail((int(width/2), int(height/2)))
+        image.paste(watermark, (int(width/2), int(height/2)), watermark)
+        image.show()
         instructions.config(text="Image saved.")
+        image.save('new.png', "PNG")
 
 
 
